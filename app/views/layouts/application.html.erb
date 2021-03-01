@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @website_title %> | <%= @page_title %></title>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <%= stylesheet_link_tag 'tw', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag 'tw', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
+</head>
+<body>
+  <div>
+      <div id="bg"></div>
+      <div id="content">
+      <nav class="hidden md:block">
+        <div class="flex flex-row min-h-4">
+            <div class="bg-blue-800 flex-grow text-center">
+                <a class="block min-h-4" href="/">Home</a>
+            </div>
+            <div class="bg-blue-700 flex-grow text-center">
+                <a href="/photos">Photos</a>
+            </div>
+            <div class="bg-blue-600 flex-grow text-center">
+                <a href="/work">Work</a>
+            </div>
+            <div class="bg-blue-500 flex-grow text-center">
+                <a href="/notes">Notes</a>
+            </div>
+        </div>
+      </nav>
+      <%= yield %>
+    </div>
+</div>
+</body>
+</html>
