@@ -1,7 +1,7 @@
 require 'net/http'
 require 'json'
 
-class FickrController < ApplicationController
+class FlickrController < ApplicationController
     
     def initialize()
         super()
@@ -14,7 +14,8 @@ class FickrController < ApplicationController
          Rails.configuration.flickr['api'],
          Rails.configuration.flickr['user']
     )
-     puts fs.get_albums
+    
+    render json: fs.get_albums
      
     end
 end

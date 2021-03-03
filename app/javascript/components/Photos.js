@@ -93,7 +93,7 @@ export class Photos extends Component {
                     </div>
                     {this.state.albums.map((album) => (
                         <div className={this.state.selectedAlbum.id === album.id ? "cc-photos-selected flex-1" : "cc-photos flex-1"} >
-                            <a className="block h-full" href="#" onClick={(e) => { this.loadPhotos(e, album) }}>{album.title}</a>
+                            <a className="block h-full" href="#" onClick={(e) => { this.loadPhotos(e, album) }}>{album.title._content}</a>
                         </div>
                     ))}
                 </div>
