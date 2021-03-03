@@ -22,7 +22,7 @@ export class Home extends Component {
                             </p>
 
                                 <p>
-                                    Developed with ReactJS on ASP.NET Core using TailwindCSS, the website displays the information from the external APIs.
+                                    Developed with ReactJS on Ruby on Rails Core using TailwindCSS, the website displays the information from the external APIs.
                                     A systemctl service on rasbperry pi server regulary pulls the master branch from a GIT repository and runs this build and deploy.
                             </p>
                             </div>
