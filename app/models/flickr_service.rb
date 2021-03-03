@@ -95,7 +95,8 @@ class FlickrService
             photos.append(p)
         end
 
-        photos[0..2]
+        photos[0..count.to_i-1]
 
     end
+    
 end
