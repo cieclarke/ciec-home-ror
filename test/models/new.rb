@@ -7,7 +7,9 @@ class NewTest < ActiveSupport::TestCase
          Rails.configuration.flickr['api'],
          Rails.configuration.flickr['user']
     )
-     puts fs.get_albums
+     albums = fs.get_albums
+     a =  albums[0]
+     puts fs.get_photos(a).to_json
      assert true
    end
 end

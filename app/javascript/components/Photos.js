@@ -39,7 +39,7 @@ export class Photos extends Component {
 
     loadPhotos(e, album) {
         e.preventDefault();
-        fetch('/Flickr/Photos/' + album.id)
+        fetch('/flickr/photos/' + album.id)
             .then((res) => {
                 return res.json();
             })
@@ -53,7 +53,7 @@ export class Photos extends Component {
 
     loadRecentPhotos(e, count) {
         e.preventDefault();
-        fetch('/Flickr/RecentPhotos/' + count)
+        fetch('/flickr/recentphotos/' + count)
             .then((res) => {
                 return res.json();
             })
@@ -102,17 +102,16 @@ export class Photos extends Component {
                         
                         <div className="flex-grow flex-1">
                             <div
-                                onClick={(e) => { this.goEvent(e, photo.SizeURLs.MEDIUM) }}
-                                onTouchend={(e) => { this.goEvent(e, photo.SizeURLs.MEDIUM) }}
+                                onClick={(e) => { this.goEvent(e, photo.size_urls.url_m) }}
+                                onTouchend={(e) => { this.goEvent(e, photo.size_urls.url_m) }}
                                 onTouchstart={(e) => { this.startEvent(e) }}
                                 onTouchmove={(e) => { this.moveEvent(e) }}
-                                style={{ backgroundImage: "url('" + photo.SizeURLs.MEDIUM + "')" }}
+                                style={{ backgroundImage: "url('" + photo.size_urls.url_m + "')" }}
                                 className="bg-left-top bg-no-repeat bg-cover h-40 ">
                                 <div className="bg-gradient-to-r from-cornflowerblue-800">
-                                    <p>{photo.Title}</p>
+                                    <p>{photo.title}</p>
                                 </div>
                             </div>
-                            
                         </div>
                     ))}
                 </div>
