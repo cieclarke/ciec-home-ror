@@ -1,13 +1,13 @@
+//const dotenv = require('dotenv').config();
+//const colors = require('tailwindcss/colors')
+
+let tailwindcss;
+
+tailwindcss = require('tailwindcss');
+
 module.exports = {
-  plugins: [
-    require('tailwindcss')('./app/javascript/stylesheets/tailwind.config.js'),
-    require('postcss-import'),
-    require('postcss-flexbugs-fixes'),
-    require('postcss-preset-env')({
-      autoprefixer: {
-        flexbox: 'no-2009'
-      },
-      stage: 3
-    })
-  ]
-}
+    plugins: [
+        tailwindcss('./website-css-config.js'),
+        require('autoprefixer')
+    ],
+};
