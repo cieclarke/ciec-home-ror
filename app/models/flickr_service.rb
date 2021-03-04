@@ -25,14 +25,18 @@ class FlickrService
         flickr_uri.query = URI.encode_www_form(params)
 
         res = Net::HTTP.get_response(flickr_uri)
-        json = JSON.parse(res.body)
-        for album in json['photosets']['photoset']
-            a = Album.new
-            a.id = album['id']
-            a.title = album['title']
-            a.description = album['description']
-            albums.append(a)
+
+        if res.is_a?(Net::HTTPSuccess)
+            json = JSON.parse(res.body)
+            json['photosets']['photoset'].each do |album|
+                a = Album.new
+                a.id = album['id']
+                a.title = album['title']
+                a.description = album['description']
+                albums.append(a)
+            end
         end
+
         albums
     end
 
@@ -53,15 +57,18 @@ class FlickrService
         flickr_uri.query = URI.encode_www_form(params)
 
         res = Net::HTTP.get_response(flickr_uri)
-        json = JSON.parse(res.body)
-        
-        for photo in json['photoset']['photo']
-            p = Photo.new
-            p.id = photo['id']
-            p.title = photo['title']
-            p.size_urls = {'url_sq' => photo['url_sq'], 'url_m' => photo['url_m']}
-            p.uploaded = photo['dateupload']
-            photos.append(p)
+
+        if res.is_a?(Net::HTTPSuccess)
+            json = JSON.parse(res.body)
+            
+            json['photoset']['photo'].each do |photo|
+                p = Photo.new
+                p.id = photo['id']
+                p.title = photo['title']
+                p.size_urls = {'url_sq' => photo['url_sq'], 'url_m' => photo['url_m']}
+                p.uploaded = photo['dateupload']
+                photos.append(p)
+            end
         end
 
         photos
@@ -84,18 +91,25 @@ class FlickrService
         flickr_uri.query = URI.encode_www_form(params)
 
         res = Net::HTTP.get_response(flickr_uri)
-        json = JSON.parse(res.body)
 
-        for photo in json['photos']['photo']
-            p = Photo.new
-            p.id = photo['id']
-            p.title = photo['title']
-            p.size_urls = {'url_sq' => photo['url_sq'], 'url_m' => photo['url_m']}
-            p.uploaded = photo['dateupload']
-            photos.append(p)
+        if res.is_a?(Net::HTTPSuccess)
+            json = JSON.parse(res.body)
+
+            json['photos']['photo'].each do |photo|
+                p = Photo.new
+                p.id = photo['id']
+                p.title = photo['title']
+                p.size_urls = { 'url_sq' => photo['url_sq'], 'url_m' => photo['url_m'] }
+                p.uploaded = photo['dateupload']
+                photos.append(p)
+            end
         end
 
-        photos[0..count.to_i-1]
+        if photos.length <= count.to_i
+            photos
+        else
+            photos[0..count.to_i-1]
+        end
 
     end
     
