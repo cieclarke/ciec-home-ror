@@ -8,7 +8,7 @@ export class Notes extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tumblr: { response: { posts: [] } }
+            tumblr: []
         };
     }
 
@@ -20,12 +20,11 @@ export class Notes extends Component {
 
     loadBlogs() {
 
-        fetch('/Tumblr/Links')
+        fetch('/tumblr/links')
             .then((res) => {
                 return res.json();
-            })
-            .then((data) => {
-                this.setState({ tumblr: data })
+            }).then((data) => {
+                this.setState({ tumblr: data });
             });
     }
 
@@ -40,9 +39,9 @@ export class Notes extends Component {
                         <NavMenu />
                         <h1 className="cc-notes">Collected articles and links</h1>
                         <div className="cc-divide cc-notes-divide">
-                            {this.state.tumblr.response.posts.map((post) => (
+                            {this.state.tumblr.map((post) => (
                                 <div className="p-2">
-                                    <a href={post.url}>{post.title}</a>
+                                    <a href={post.link}>{post.title}</a>
                                 </div>
                             ))}
                         </div>

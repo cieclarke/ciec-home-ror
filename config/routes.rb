@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   get '/flickr/albums', to: 'flickr#albums'
   get '/flickr/photos/:albumid', to: 'flickr#photos'
   get '/flickr/recentphotos/:count', to: 'flickr#recentphotos'
+  get '/tumblr/links', to: 'tumblr#links'
   get '*path', to: 'home#index'
 end

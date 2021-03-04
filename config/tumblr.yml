@@ -1,0 +1,12 @@
+default: &default
+    api: 'QZZoo1PTjzR6zJpJQibwFshmEYjkdBw780HlKNr3lQWIWwxbUU'
+    uri: 'https://api.tumblr.com/v2/blog/mendipsnow.tumblr.com/posts'
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
